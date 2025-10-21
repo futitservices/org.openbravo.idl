@@ -1,0 +1,58 @@
+/**
+*   This file was generated automatically by the 'createModuleBuild' task.
+*   Created at: 2025-10-17T17:15:00.491851321Z.
+*
+*   WARNING: Do not put your credentials directly in this file.
+*
+*/
+
+group          = "org.openbravo"
+version        = "3.0.207000"
+description    = "Utility to speed up the implementation of Openbravo ERP facilitating the process of initial data load needed to go in production."
+ext.artifact   = "idl"
+ext.repository = "https://maven.pkg.github.com/futitservices/org.openbravo.idl"
+
+configurations {
+    moduleDependencyContainer
+}
+
+publishing {
+    publications {
+        "org.openbravo.idl"(MavenPublication) {
+            from components.java
+            groupId    = group
+            artifactId = artifact
+            version    = version
+        }
+    }
+    repositories {
+        maven {
+            url = "https://maven.pkg.github.com/futitservices/org.openbravo.idl"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = "https://maven.pkg.github.com/futitservices/org.openbravo.idl"
+    }
+    maven {
+        url = "https://repo.futit.cloud/repository/maven-releases"
+    }
+    maven {
+        url = "https://repo.futit.cloud/repository/maven-public-releases"
+    }
+    maven {
+        url = "https://repo.futit.cloud/repository/maven-public-jars"
+    }
+}
+
+/**
+* Declare Java dependencies using 'implementation'
+* Ex: implementation "com.sun.mail:javax.mail:1.6.2"
+*/
+dependencies {
+   implementation('com.etendoerp.platform:etendo-core:[22.1.0, 25.3.0)') 
+
+}
